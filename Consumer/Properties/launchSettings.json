@@ -1,0 +1,11 @@
+{
+    "profiles": {
+        "Development": {
+            "launchBrowser": false,
+            "environmentVariables": {
+                "ASPNETCORE_ENVIRONMENT": "Development",
+                "MONGODB_CONNECTION_STRING": "mongodb://127.0.0.1:27017"
+            }
+        }
+    }
+}

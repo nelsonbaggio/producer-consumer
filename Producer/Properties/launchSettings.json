@@ -1,0 +1,16 @@
+{
+    "profiles": {
+        "Development": {
+            "commandName": "Project",
+            "environmentVariables": {
+                "ASPNETCORE_ENVIRONMENT": "Development",
+                "BROKER_HOST_NAME": "localhost"
+            }
+        },
+        "Production": {
+            "commandName": "Project",
+            "environmentVariables": {
+            }
+        }
+    }
+}
