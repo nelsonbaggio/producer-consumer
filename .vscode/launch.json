@@ -1,0 +1,46 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Producer",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build",
+            "program": "${workspaceFolder}/Producer/bin/Debug/netcoreapp2.2/Producer.dll",
+            "args": [],
+            "cwd": "${workspaceFolder}/Producer",
+            "console": "internalConsole",
+            "stopAtEntry": false
+        },
+        {
+            "name": "Consumer",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build",
+            "program": "${workspaceFolder}/Consumer/bin/Debug/netcoreapp2.2/Consumer.dll",
+            "args": [],
+            "cwd": "${workspaceFolder}/Consumer",
+            "console": "internalConsole",
+            "stopAtEntry": false
+        },
+        {
+            "name": ".NET Core Docker Attach",
+            "type": "coreclr",
+            "request": "attach",
+            "processId": "${command:pickRemoteProcess}",
+            "pipeTransport": {
+                "pipeProgram": "docker",
+                "pipeArgs": [ "exec", "-i", "happy_meitner" ],
+                "debuggerPath": "/home/baggio/vsdbg",
+                "pipeCwd": "${workspaceRoot}",
+                "quoteArgs": false
+            },
+            "sourceFileMap": {
+                "/home/Producer": "${workspaceRoot}"
+            }
+        }
+    ]
+}

@@ -12,7 +12,7 @@ namespace Resource
 
         public Database Connect()
         {
-            this.Client = new MongoClient(Environment.GetEnvironmentVariable("MONGODB_CONNECTION_STRING"));
+            this.Client = new MongoClient("mongodb://127.0.0.1:27017");
             return this;
         }
 
@@ -22,13 +22,11 @@ namespace Resource
             return this;
         }
 
-        public void Create(string collection, string key, string value)
+        public void Create(string collection, BsonDocument book)
         {
 
             var document = this.Mongodb.GetCollection<BsonDocument>(collection);
-            BsonDocument item = new BsonDocument();
-            item.Add(new BsonElement(key, value));
-            document.InsertOne(item);
+            document.InsertOne(book);
 
         }
 

@@ -2,7 +2,7 @@
 using System;
 using System.IO;
 using System.Text;
-
+using System.Threading;
 namespace Producer
 {
     class Sender
@@ -22,14 +22,15 @@ namespace Producer
 
                     while (true)
                     {
-                        Console.WriteLine("Send your message:");
-                        string message = Console.ReadLine();
+                        string message = $"The random name is: {new Random().Next(0, 100)}";
+                        
                         var body = Encoding.UTF8.GetBytes(message);
 
                         channel.BasicPublish(exchange: "", routingKey: "hello",
                                 basicProperties: null, body: body);
 
                         Console.WriteLine(" [x] Sent: {0}", message);
+                        Thread.Sleep(1000);
                     }
 
                 }
