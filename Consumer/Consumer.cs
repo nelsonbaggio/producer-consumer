@@ -41,7 +41,10 @@ namespace Consumer
                     };
 
                     channel.BasicConsume(queue: "hello", autoAck: true, consumer: consumer);
-                    Console.ReadLine();
+                    while (true)
+                    {
+                        Thread.Sleep(1000);
+                    }
                 }
             }
         }
